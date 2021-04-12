@@ -1,0 +1,12 @@
+schema:
+  - https://api.spacex.land/graphql
+
+documents: 
+  - src/**/*.graphql
+
+generates: 
+  ./src/app/services/spacexGraphql.service.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-apollo-angular
