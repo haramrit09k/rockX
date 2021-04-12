@@ -1,6 +1,25 @@
-<div style="text-align: center;">
-    <h1 style="color: darkgreen;">rockX - Let's rock-et!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rockX</title>
+    <style>
+        body{
+    background-color: lightcyan;
+}
+    </style>
+</head>
+<body>
+    <div mat-raised-button matTooltip="Go to homepage" [matTooltipShowDelay]="1000"
+aria-label="Button that displays a tooltip when focused or hovered over" style="text-align: center; cursor: pointer;" [routerLink]="['/']">
+<img style="margin-top: 10px;" src="assets/logo.png" alt="rockX logo" height="50">   
+<h1 style="color: darkgreen;">rockX - Let's rock-et!</h1>
+<p>A list of SpaceX's past launches</p>
 </div>
 
-
 <router-outlet></router-outlet>
+
+</body>
+</html>
