@@ -2,23 +2,35 @@
     <main>
         <section class="container">
             <div *ngFor="let launch of pastLaunches">
-            <mat-card
-            *ngIf="launch && launch.links && launch.rocket"
-            [routerLink]="['/', launch.id]">
-            <mat-card-header>
-                <img height="30" width="30" mat-card-avatar src="{{launch.links.mission_patch_small}}">
+                <mat-card *ngIf="launch && launch.links && launch.rocket" [routerLink]="['/', launch.id]">
+                    <mat-card-header>
+                        <div *ngIf="launch.links.mission_patch_small; else elseBlock_missionPatch">
+                            <img height="30" width="30" mat-card-avatar src="{{launch.links.mission_patch_small}}">
+                        </div>
+                        <ng-template #elseBlock_missionPatch>
+                            <img height="30" width="30" src="./assets/image-not-found.png">
+                        </ng-template>
+                        <mat-card-title>
+                            {{launch.mission_name}}
+                        </mat-card-title>
 
-            <mat-card-title>
-                {{launch.mission_name}}
-            </mat-card-title>
+                        <mat-card-subtitle *ngIf="launch.rocket">
+                            {{launch.rocket.rocket_name}} - launched {{ launch.launch_date_utc | relativeTime }}
+                        </mat-card-subtitle>
+                        
+                    </mat-card-header>
+                    <div *ngIf="launch.links.flickr_images">
+                        <img *ngIf="launch.links.flickr_images[0]; else elseBlock" height="300" width="300"
+                            loading="lazy" mat-card-image src="{{launch.links.flickr_images[0]}}" alt="">
+                        <ng-template #elseBlock>
+                            <img src="./assets/image-not-found.png" mat-card-image height="300" width="300"
+                                loading="lazy" alt="">
+                        </ng-template>
+                    </div>
 
-            <mat-card-subtitle *ngIf="launch.rocket">
-                {{launch.rocket.rocket_name}} - launched {{ launch.launch_date_utc | relativeTime }}
-            </mat-card-subtitle>
-        </mat-card-header>
 
-            <img *ngIf="launch.links.flickr_images" height="300" width="300" loading="lazy" mat-card-image src="{{launch.links.flickr_images[0]}}" alt="">
-            </mat-card>
+
+                </mat-card>
             </div>
         </section>
     </main>
