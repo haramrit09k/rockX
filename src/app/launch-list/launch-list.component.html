@@ -3,6 +3,7 @@
         <section class="container">
             <div *ngFor="let launch of pastLaunches">
             <mat-card
+            *ngIf="launch && launch.links && launch.rocket"
             [routerLink]="['/', launch.id]">
             <mat-card-header>
                 <img height="30" width="30" mat-card-avatar src="{{launch.links.mission_patch_small}}">
@@ -11,12 +12,12 @@
                 {{launch.mission_name}}
             </mat-card-title>
 
-            <mat-card-subtitle>
+            <mat-card-subtitle *ngIf="launch.rocket">
                 {{launch.rocket.rocket_name}}
             </mat-card-subtitle>
         </mat-card-header>
 
-            <img height="300" width="300" loading="lazy" mat-card-image src="{{launch.links.flickr_images[0]}}" alt="">
+            <img *ngIf="launch.links.flickr_images" height="300" width="300" loading="lazy" mat-card-image src="{{launch.links.flickr_images[0]}}" alt="">
             </mat-card>
             </div>
         </section>
