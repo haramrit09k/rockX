@@ -13,7 +13,7 @@
             </mat-card-title>
 
             <mat-card-subtitle *ngIf="launch.rocket">
-                {{launch.rocket.rocket_name}}
+                {{launch.rocket.rocket_name}} - launched {{ launch.launch_date_utc | relativeTime }}
             </mat-card-subtitle>
         </mat-card-header>
 
