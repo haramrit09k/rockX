@@ -1337,7 +1337,10 @@ export type LaunchDetailsQuery = (
     & Pick<Launch, 'id' | 'mission_name' | 'details'>
     & { links?: Maybe<(
       { __typename?: 'LaunchLinks' }
-      & Pick<LaunchLinks, 'flickr_images' | 'mission_patch'>
+      & Pick<LaunchLinks, 'flickr_images' | 'mission_patch' | 'video_link' | 'wikipedia'>
+    )>, launch_site?: Maybe<(
+      { __typename?: 'LaunchSite' }
+      & Pick<LaunchSite, 'site_name_long'>
     )> }
   )> }
 );
@@ -1371,6 +1374,11 @@ export const LaunchDetailsDocument = gql`
     links {
       flickr_images
       mission_patch
+      video_link
+      wikipedia
+    }
+    launch_site {
+      site_name_long
     }
   }
 }
@@ -1390,11 +1398,11 @@ export const PastLaunchesListDocument = gql`
     query pastLaunchesList($limit: Int!) {
   launchesPast(limit: $limit) {
     id
-    mission_name
     links {
       flickr_images
       mission_patch_small
     }
+    mission_name
     rocket {
       rocket_name
     }
