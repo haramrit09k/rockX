@@ -1,5 +1,5 @@
 query pastLaunchesList($limit: Int!){
-    launchesPast(limit: $limit, sort: launch_date_utc){
+    launchesPast(limit: $limit){
     id
     links {
       flickr_images
