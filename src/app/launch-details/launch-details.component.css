@@ -1,7 +1,26 @@
 .photo-grid {
-    padding-top: 30px;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, 300px);
-    justify-content: center;
-  }
+  padding-top: 30px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+}
+
+a:link,
+a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover,
+a:active {
+  background-color: red;
+}
+
+.wikipedia {
+  text-align: center;
+}

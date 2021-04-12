@@ -14,9 +14,16 @@
       />
       <mat-card-content>
         <p>{{ launchDetails.details }}</p>
+        <p *ngIf="launchDetails.launch_site"><b>Launch Site:</b><br>{{launchDetails.launch_site.site_name_long}}</p>
+        <div class="wikipedia">
+          <a href={{launchDetails.links.wikipedia}}>Wikipedia for {{launchDetails.mission_name}}</a>
+        </div>
       </mat-card-content>
     </mat-card>
   </section>
+  <div *ngIf="launchDetails.links" style="margin-top: 30px; display: block; text-align: center;">
+    <iframe class="e2e-iframe-trusted-src" [src]="launchDetails.links.video_link | safe" frameborder="0" height="390" width="640" allowfullscreen></iframe>
+  </div>
   <section *ngIf="launchDetails && launchDetails.links" class="photo-grid">
     <img
       *ngFor="let pic of launchDetails.links.flickr_images"
