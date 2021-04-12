@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "codegen": "gql-gen",
-    "postinstall": "ng build --aot -prod"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
