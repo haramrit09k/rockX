@@ -9,14 +9,17 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RelativeTimePipe } from './relative-time/relative-time.pipe';
+import { SafePipe } from './safe/safe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LaunchListComponent,
     LaunchDetailsComponent,
-    RelativeTimePipe
+    RelativeTimePipe,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { RelativeTimePipe } from './relative-time/relative-time.pipe';
     GraphQLModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
