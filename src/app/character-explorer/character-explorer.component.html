@@ -1,0 +1,86 @@
+<main class="explorer" *ngIf="state$ | async as state">
+  <section class="search-hero">
+    <h1>Search the multiverse. <span>Find anyone.</span></h1>
+
+    <form [formGroup]="searchForm" class="search-controls">
+      <label class="search-field">
+        <span class="sr-only">Character name</span>
+        <input formControlName="name" placeholder="Search characters by name" autocomplete="off">
+      </label>
+
+      <label>
+        <span>Status</span>
+        <select formControlName="status">
+          <option value="">All</option>
+          <option value="alive">Alive</option>
+          <option value="dead">Dead</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Species</span>
+        <select formControlName="species">
+          <option value="">All</option>
+          <option value="Human">Human</option>
+          <option value="Alien">Alien</option>
+          <option value="Humanoid">Humanoid</option>
+          <option value="Robot">Robot</option>
+          <option value="Animal">Animal</option>
+          <option value="Mythological Creature">Mythological</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </label>
+    </form>
+  </section>
+
+  <section *ngIf="state.loading" class="status-panel" aria-live="polite">
+    <div class="portal-loader"></div>
+    <p>Scanning dimensions…</p>
+  </section>
+
+  <section *ngIf="state.errorMessage" class="status-panel error" role="alert">
+    <p>{{ state.errorMessage }}</p>
+    <button type="button" class="secondary-button" (click)="searchForm.reset({ name: '', status: '', species: '' })">
+      Reset search
+    </button>
+  </section>
+
+  <section *ngIf="state.data as data" class="results" aria-label="Character results">
+    <div class="results-meta">
+      <p><strong>{{ data.info.count }}</strong> residents found</p>
+      <p>Page {{ pageSubject.value }} of {{ data.info.pages }}</p>
+    </div>
+
+    <div class="character-grid">
+      <a
+        *ngFor="let character of data.results; trackBy: trackById"
+        class="character-row"
+        [routerLink]="['/characters', character.id]"
+      >
+        <img [src]="character.image" [alt]="character.name" width="176" height="176" loading="lazy">
+        <div class="character-copy">
+          <div class="name-line">
+            <h2>{{ character.name }}</h2>
+            <button
+              type="button"
+              class="save-button"
+              [class.saved]="isSaved(character.id)"
+              (click)="toggleSaved($event, character.id)"
+              [attr.aria-label]="(isSaved(character.id) ? 'Remove ' : 'Save ') + character.name"
+            >{{ isSaved(character.id) ? 'Saved' : 'Save' }}</button>
+          </div>
+          <p class="identity"><span [class]="'status-dot ' + character.status.toLowerCase()"></span>{{ character.status }} · {{ character.species }}</p>
+          <p class="location">{{ character.location.name }}</p>
+          <p class="episodes">Open appearance trail</p>
+        </div>
+      </a>
+    </div>
+
+    <nav class="pagination" aria-label="Character result pages">
+      <button type="button" class="secondary-button" [disabled]="!data.info.prev" (click)="changePage(data.info.prev || 1)">Previous</button>
+      <span>{{ pageSubject.value }} / {{ data.info.pages }}</span>
+      <button type="button" class="secondary-button" [disabled]="!data.info.next" (click)="changePage(data.info.next || data.info.pages)">Next</button>
+    </nav>
+  </section>
+</main>

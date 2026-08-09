@@ -1,25 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rockX</title>
-    <style>
-        body{
-    background-color: lightcyan;
-}
-    </style>
-</head>
-<body>
-    <div class="sticky-header" style="width: fit-content;" mat-raised-button matTooltip="Go to homepage" [matTooltipShowDelay]="1000"
-aria-label="Button that displays a tooltip when focused or hovered over" style="text-align: center; cursor: pointer;" [routerLink]="['/']">
-<img style="margin-top: 10px;" src="assets/logo.png" alt="rockX logo" height="50">   
-<h1 style="color: darkgreen;">rockX - Let's rock-et!</h1>
-<p>A list of SpaceX's past launches</p>
-</div>
+<header class="app-header">
+  <a class="brand" routerLink="/" aria-label="Portal Search Desk home">
+    <img src="assets/portal-mark.png" alt="" height="54" width="54">
+    <span>
+      <strong>PORTAL <em>SEARCH DESK</em></strong>
+      <small>Your unofficial Rick and Morty companion</small>
+    </span>
+  </a>
+
+  <nav aria-label="Primary navigation">
+    <button type="button" class="nav-action" (click)="surpriseMe()">
+      <strong>Surprise me</strong>
+      <small>Random episode</small>
+    </button>
+    <a class="nav-action" routerLink="/saved" routerLinkActive="active">
+      <strong>My portal</strong>
+      <small>Saved favorites</small>
+    </a>
+  </nav>
+</header>
 
 <router-outlet></router-outlet>
 
-</body>
-</html>
+<footer>
+  Portal Search Desk is an unofficial fan project and is not affiliated with Adult Swim or the creators of Rick and Morty.
+</footer>

@@ -1,0 +1,42 @@
+.saved-page {
+  margin: 0 auto;
+  max-width: 1200px;
+  min-height: calc(100vh - 150px);
+  padding: 58px clamp(22px, 4vw, 56px) 72px;
+}
+
+.eyebrow { color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+.saved-page h1 {
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  font-weight: 750;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  margin: 8px 0 18px;
+}
+.intro { color: var(--muted); line-height: 1.65; max-width: 620px; }
+.saved-page > section { margin-top: 52px; }
+.section-heading { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding-bottom: 14px; }
+.section-heading h2 { margin: 0; }
+.section-heading span { color: var(--accent); }
+.empty { color: var(--muted); padding: 24px 0; }
+.saved-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.saved-grid article,
+.episode-list article { align-items: center; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; padding: 16px 0; }
+.saved-grid article:nth-child(odd) { padding-right: 24px; }
+.saved-grid article:nth-child(even) { padding-left: 24px; }
+.saved-grid a { align-items: center; color: var(--text); display: flex; gap: 16px; text-decoration: none; }
+.saved-grid img { border-radius: 50%; height: 72px; object-fit: cover; width: 72px; }
+.saved-grid a span { display: flex; flex-direction: column; }
+.saved-grid small,
+.episode-list small { color: var(--muted); margin-top: 4px; }
+.saved-page article button { background: none; border: 0; color: var(--muted); cursor: pointer; }
+.saved-page article button:hover { color: #ff6b6f; }
+.episode-list a { align-items: center; color: var(--text); display: grid; gap: 20px; grid-template-columns: 70px minmax(160px, 1fr) 150px; text-decoration: none; }
+.episode-list a > span { color: var(--accent); }
+
+@media (max-width: 700px) {
+  .saved-grid { grid-template-columns: 1fr; }
+  .saved-grid article:nth-child(n) { padding-left: 0; padding-right: 0; }
+  .episode-list a { gap: 10px; grid-template-columns: 64px 1fr; }
+  .episode-list small { display: none; }
+}

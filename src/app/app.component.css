@@ -1,16 +1,134 @@
-html{
-    min-height: 100%;
-}
-body{
-    background-color: lightcyan;
-    min-height: 100%;
-    height: max-content;
+.app-header {
+  align-items: center;
+  background: rgba(8, 11, 12, 0.96);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  min-height: 88px;
+  padding: 10px clamp(22px, 4vw, 56px);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
-.sticky-header{
-        position: sticky;
-        top:0;
-        z-index: 999;
-        background-color: lightcyan;
-        padding-bottom: 10px;
+.brand,
+.nav-action {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.brand img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.brand span,
+.nav-action {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand strong {
+  font-size: clamp(1rem, 2vw, 1.42rem);
+  letter-spacing: -0.02em;
+}
+
+.brand em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.brand small,
+.nav-action small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+nav {
+  align-items: center;
+  display: flex;
+  gap: 14px;
+}
+
+.nav-action {
+  background: none;
+  border: 0;
+  border-left: 1px solid var(--line);
+  cursor: pointer;
+  font: inherit;
+  min-width: 138px;
+  padding: 4px 0 4px 24px;
+  text-align: left;
+}
+
+.nav-action strong {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nav-action:hover strong,
+.nav-action.active strong {
+  color: var(--accent);
+}
+
+.nav-action:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.74rem;
+  padding: 20px clamp(22px, 4vw, 56px);
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .app-header {
+    align-items: center;
+    padding-left: 14px;
+    padding-right: 14px;
+    position: static;
+  }
+
+  .brand small,
+  .nav-action small {
+    display: none;
+  }
+
+  .brand img {
+    height: 36px;
+    width: 36px;
+  }
+
+  .brand { gap: 8px; }
+
+  .brand strong {
+    display: block;
+    font-size: 0.9rem;
+    max-width: 132px;
+  }
+
+  nav {
+    gap: 4px;
+  }
+
+  .nav-action {
+    border: 0;
+    font-size: 0.75rem;
+    min-width: 0;
+    padding: 10px 4px;
+    white-space: nowrap;
+  }
+
+  .nav-action strong { font-size: 0.75rem; }
 }
