@@ -12,7 +12,7 @@ FROM node:24.4.0-bookworm-slim AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
 
-COPY --from=build /app/dist/rockX ./dist/rockX
+COPY --from=build /app/dist/portal-search-desk ./dist/portal-search-desk
 COPY server.js ./server.js
 
 USER node

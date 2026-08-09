@@ -4,7 +4,9 @@ An Angular and GraphQL companion for Rick and Morty fans who want to identify a 
 
 The product is intentionally more than an API gallery: character search leads into appearance trails, episode pages reveal their full cast, “Surprise me” removes rewatch indecision, and favorites make the experience useful across visits.
 
-![Portal Search Desk character explorer](design-implementation.png)
+[Open the live app](https://portal-search-desk-359b5c84a84b.herokuapp.com/)
+
+![Portal Search Desk character explorer](docs/design/design-implementation.png)
 
 ## What it demonstrates
 
@@ -15,6 +17,26 @@ The product is intentionally more than an API gallery: character search leads in
 - Browser-local favorites without accounts or collection of personal data
 
 Data and images come from the public [Rick and Morty GraphQL API](https://rickandmortyapi.com/documentation/#graphql) at `https://rickandmortyapi.com/graphql`.
+
+## Architecture
+
+The production server only serves the compiled Angular application and handles SPA route fallback. GraphQL requests run in the browser through Apollo Client directly to the public API.
+
+```text
+Browser → Node static server → Angular application
+Browser → Angular + Apollo → Rick and Morty GraphQL API
+```
+
+Key code:
+
+- `src/app/character-explorer/` — filters, pagination, loading, and result cards
+- `src/app/character-details/` — character facts and nested episode appearances
+- `src/app/episode-details/` — episode metadata and cast exploration
+- `src/app/saved/` — the browser-local collection
+- `src/app/services/portal.service.ts` — GraphQL operations and Apollo policies
+- `src/app/services/favorites.service.ts` — `localStorage` persistence
+- `src/app/graphql.module.ts` — Apollo endpoint and cache setup
+- `server.js` — production static assets, caching, and Angular deep-link fallback
 
 ## Run locally
 
@@ -36,7 +58,7 @@ npm test -- --watch=false --browsers=ChromeHeadless
 npm run build
 ```
 
-The production bundle is written to `dist/rockX`.
+The production bundle is written to `dist/portal-search-desk`.
 
 To smoke-test the same static server used in production:
 
@@ -46,6 +68,8 @@ npm start
 ```
 
 The server reads Heroku's `PORT`, serves fingerprinted assets with long-lived cache headers, and falls back to `index.html` for Angular routes.
+
+Heroku uses the multi-stage `Dockerfile`: Node 16 builds the legacy Angular 11 toolchain, while the final production image runs the dependency-free static server on Node 24.
 
 ## Example GraphQL operations
 

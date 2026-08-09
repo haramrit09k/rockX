@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rockX": {
+    "portal-search-desk": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,14 +20,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rockX",
+            "outputPath": "dist/portal-search-desk",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -71,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rockX:build"
+            "browserTarget": "portal-search-desk:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rockX:build:production"
+              "browserTarget": "portal-search-desk:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rockX:build"
+            "browserTarget": "portal-search-desk:build"
           }
         },
         "test": {
@@ -93,7 +92,6 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -107,28 +105,15 @@
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
           }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "rockX:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "rockX:serve:production"
-            }
-          }
         }
       }
     }
   },
-  "defaultProject": "rockX"
+  "defaultProject": "portal-search-desk"
 }

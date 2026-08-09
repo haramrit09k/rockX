@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const port = Number(process.env.PORT) || 8080;
-const publicDirectory = path.resolve(__dirname, 'dist', 'rockX');
+const publicDirectory = path.resolve(__dirname, 'dist', 'portal-search-desk');
 const indexFile = path.join(publicDirectory, 'index.html');
 
 const contentTypes = {

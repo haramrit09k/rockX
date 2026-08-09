@@ -3,6 +3,5 @@ dist
 .git
 .gitignore
 .nvmrc
-design-*.png
-design-qa.md
+docs/design
 npm-debug.log

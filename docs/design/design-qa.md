@@ -2,10 +2,10 @@
 
 ## Evidence
 
-- Source visual truth: `design-reference.png`
-- Browser-rendered implementation: `design-implementation.png`
-- Side-by-side comparison: `design-comparison.png`
-- Responsive captures: `design-mobile.png`, `design-mobile-character.png`
+- Source visual truth: `docs/design/design-reference.png`
+- Browser-rendered implementation: `docs/design/design-implementation.png`
+- Side-by-side comparison: `docs/design/design-comparison.png`
+- Responsive captures: `docs/design/design-mobile.png`, `docs/design/design-mobile-character.png`
 - Desktop viewport: 1440 x 1024 CSS px at device scale factor 1
 - Source pixels: 1487 x 1058, normalized with contain scaling and centered padding to 1440 x 1024
 - Implementation pixels: 1440 x 1024
@@ -51,7 +51,7 @@ Fixes applied: portraits increased to 176 px, rows increased to 220 px, the extr
 
 ### Pass 2
 
-Post-fix evidence in `design-comparison.png`, `design-mobile.png`, and `design-mobile-character.png` shows no remaining actionable P0, P1, or P2 differences.
+Post-fix evidence in `docs/design/design-comparison.png`, `docs/design/design-mobile.png`, and `docs/design/design-mobile-character.png` shows no remaining actionable P0, P1, or P2 differences.
 
 ## Follow-up polish
 
