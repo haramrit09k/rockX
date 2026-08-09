@@ -3,32 +3,28 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LaunchListComponent } from './launch-list/launch-list.component';
-import { LaunchDetailsComponent } from './launch-details/launch-details.component';
-import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { RelativeTimePipe } from './relative-time/relative-time.pipe';
-import { SafePipe } from './safe/safe.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GraphQLModule } from './graphql.module';
+import { CharacterExplorerComponent } from './character-explorer/character-explorer.component';
+import { CharacterDetailsComponent } from './character-details/character-details.component';
+import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
+import { SavedComponent } from './saved/saved.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LaunchListComponent,
-    LaunchDetailsComponent,
-    RelativeTimePipe,
-    SafePipe
+    CharacterExplorerComponent,
+    CharacterDetailsComponent,
+    EpisodeDetailsComponent,
+    SavedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GraphQLModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatTooltipModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

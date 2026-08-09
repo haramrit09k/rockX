@@ -1,0 +1,8 @@
+node_modules
+dist
+.git
+.gitignore
+.nvmrc
+design-*.png
+design-qa.md
+npm-debug.log

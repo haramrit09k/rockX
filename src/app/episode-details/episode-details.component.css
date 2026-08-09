@@ -1,0 +1,67 @@
+.episode-page {
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: calc(100vh - 150px);
+  padding: 30px clamp(22px, 4vw, 56px) 64px;
+}
+
+.episode-hero {
+  align-items: flex-end;
+  background: #111617;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+  min-height: 330px;
+  padding: clamp(28px, 5vw, 70px);
+}
+
+.eyebrow,
+.code {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.code { font-size: 1rem; margin: 24px 0 8px; }
+h1 { font-size: clamp(2.6rem, 6vw, 5.8rem); letter-spacing: -0.055em; line-height: 0.95; margin: 0; max-width: 850px; }
+.air-date { color: var(--muted); margin: 20px 0 0; }
+.cast-section { padding-top: 46px; }
+
+.section-heading {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.section-heading h2 { font-size: 1.7rem; margin: 4px 0 0; }
+.section-heading p { color: var(--muted); }
+
+.cast-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.cast-grid a {
+  border-bottom: 1px solid var(--line);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 20px 0;
+  text-decoration: none;
+}
+
+.cast-grid img { aspect-ratio: 1; border-radius: 50%; object-fit: cover; width: 100%; }
+.cast-grid strong { margin-top: 12px; }
+.cast-grid span { color: var(--muted); font-size: 0.76rem; margin-top: 5px; }
+.cast-grid a:hover strong { color: var(--accent); }
+
+@media (max-width: 1000px) { .cast-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 700px) {
+  .episode-hero { align-items: stretch; flex-direction: column; gap: 30px; min-height: 0; }
+  .cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

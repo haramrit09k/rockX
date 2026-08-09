@@ -1,0 +1,52 @@
+<main class="detail-page" *ngIf="state$ | async as state">
+  <a class="back-link" routerLink="/">Back to character search</a>
+
+  <section *ngIf="state.loading" class="status-panel"><div class="portal-loader"></div><p>Opening character file…</p></section>
+  <section *ngIf="state.errorMessage" class="status-panel error" role="alert">
+    <p>{{ state.errorMessage }}</p>
+    <button type="button" class="secondary-button" (click)="retry()">Try again</button>
+  </section>
+
+  <article *ngIf="state.character as character" class="character-detail">
+    <div class="portrait-column">
+      <img [src]="character.image" [alt]="character.name" width="560" height="560">
+      <p>{{ character.origin.name }}</p>
+    </div>
+
+    <div class="profile-column">
+      <header>
+        <div>
+          <p class="eyebrow">Character file #{{ character.id }}</p>
+          <h1>{{ character.name }}</h1>
+          <p class="identity"><span [class]="'status-dot ' + character.status.toLowerCase()"></span>{{ character.status }} · {{ character.species }}</p>
+        </div>
+        <button type="button" class="primary-button" (click)="toggleSaved(character.id)">
+          {{ isSaved(character.id) ? 'Saved to my portal' : 'Save character' }}
+        </button>
+      </header>
+
+      <dl>
+        <div><dt>Gender</dt><dd>{{ character.gender }}</dd></div>
+        <div><dt>Type</dt><dd>{{ character.type || 'Not classified' }}</dd></div>
+        <div><dt>Origin</dt><dd>{{ character.origin.name }}</dd></div>
+        <div><dt>Last known location</dt><dd>{{ character.location.name }}</dd></div>
+      </dl>
+
+      <section class="appearances">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Appearance trail</p>
+            <h2>Every known episode</h2>
+          </div>
+          <strong>{{ character.episode.length }} appearances</strong>
+        </div>
+        <a *ngFor="let episode of character.episode; trackBy: trackEpisode" [routerLink]="['/episodes', episode.id]" class="episode-row">
+          <span>{{ episode.episode }}</span>
+          <strong>{{ episode.name }}</strong>
+          <time>{{ episode.airDate }}</time>
+          <em>Inspect cast</em>
+        </a>
+      </section>
+    </div>
+  </article>
+</main>

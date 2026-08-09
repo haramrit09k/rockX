@@ -1,0 +1,41 @@
+<main class="episode-page" *ngIf="state$ | async as state">
+  <a class="back-link" routerLink="/">Back to character search</a>
+
+  <section *ngIf="state.loading" class="status-panel"><div class="portal-loader"></div><p>Pulling episode records…</p></section>
+  <section *ngIf="state.errorMessage" class="status-panel error" role="alert">
+    <p>{{ state.errorMessage }}</p>
+    <button type="button" class="secondary-button" (click)="retry()">Try again</button>
+  </section>
+
+  <article *ngIf="state.episode as episode">
+    <header class="episode-hero">
+      <div>
+        <p class="eyebrow">Random episode dossier</p>
+        <p class="code">{{ episode.episode }}</p>
+        <h1>{{ episode.name }}</h1>
+        <p class="air-date">First aired {{ episode.airDate }}</p>
+      </div>
+      <button type="button" class="primary-button" (click)="toggleSaved(episode.id)">
+        {{ isSaved(episode.id) ? 'Saved to my portal' : 'Save episode' }}
+      </button>
+    </header>
+
+    <section class="cast-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Featured cast</p>
+          <h2>Characters in this episode</h2>
+        </div>
+        <p>{{ episode.characters.length }} characters</p>
+      </div>
+
+      <div class="cast-grid">
+        <a *ngFor="let character of episode.characters; trackBy: trackCharacter" [routerLink]="['/characters', character.id]">
+          <img [src]="character.image" [alt]="character.name" width="180" height="180" loading="lazy">
+          <strong>{{ character.name }}</strong>
+          <span>{{ character.status }} · {{ character.species }}</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</main>

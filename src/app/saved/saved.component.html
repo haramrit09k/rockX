@@ -1,0 +1,38 @@
+<main class="saved-page" *ngIf="state$ | async as state">
+  <p class="eyebrow">Your collection</p>
+  <h1>My portal</h1>
+  <p class="intro">Keep the characters you want to remember and episodes worth revisiting. Everything is stored only in this browser.</p>
+
+  <section>
+    <div class="section-heading">
+      <h2>Saved characters</h2>
+      <span>{{ state.characters.length }}</span>
+    </div>
+    <p *ngIf="!state.characters.length" class="empty">No characters saved yet. Start with a multiverse search.</p>
+    <div class="saved-grid">
+      <article *ngFor="let character of state.characters; trackBy: trackById">
+        <a [routerLink]="['/characters', character.id]">
+          <img [src]="character.image" [alt]="character.name" width="130" height="130">
+          <span><strong>{{ character.name }}</strong><small>{{ character.species }} · {{ character.status }}</small></span>
+        </a>
+        <button type="button" (click)="removeCharacter(character.id)">Remove</button>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-heading">
+      <h2>Saved episodes</h2>
+      <span>{{ state.episodes.length }}</span>
+    </div>
+    <p *ngIf="!state.episodes.length" class="empty">No episodes saved yet. Let “Surprise me” pick your first one.</p>
+    <div class="episode-list">
+      <article *ngFor="let episode of state.episodes; trackBy: trackById">
+        <a [routerLink]="['/episodes', episode.id]">
+          <span>{{ episode.episode }}</span><strong>{{ episode.name }}</strong><small>{{ episode.airDate }}</small>
+        </a>
+        <button type="button" (click)="removeEpisode(episode.id)">Remove</button>
+      </article>
+    </div>
+  </section>
+</main>

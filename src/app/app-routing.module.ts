@@ -1,16 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LaunchDetailsComponent} from './launch-details/launch-details.component';
-import {LaunchListComponent} from './launch-list/launch-list.component';
+import { CharacterDetailsComponent } from './character-details/character-details.component';
+import { CharacterExplorerComponent } from './character-explorer/character-explorer.component';
+import { EpisodeDetailsComponent } from './episode-details/episode-details.component';
+import { SavedComponent } from './saved/saved.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LaunchListComponent
+    component: CharacterExplorerComponent
   },
   {
-    path: ':id',
-    component: LaunchDetailsComponent
+    path: 'characters/:id',
+    component: CharacterDetailsComponent
+  },
+  {
+    path: 'episodes/:id',
+    component: EpisodeDetailsComponent
+  },
+  {
+    path: 'saved',
+    component: SavedComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 
